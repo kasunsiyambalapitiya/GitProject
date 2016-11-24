@@ -3,13 +3,14 @@
 $1
 
 save(){
-cloc "$1" > cloc.txt
+mkdir -p tempFiles
+cloc "$1" > ./tempFiles/cloc.txt
 
 #selecting only sum
 
-egrep "SUM" cloc.txt > afterEgrep.txt
+egrep "SUM" ./tempFiles/cloc.txt >./tempFiles/afterEgrep.txt
 # trim the spaces and saving it
-noOfLines=$( cat afterEgrep.txt | tr -s " " | cut -d " " -f5 )
+noOfLines=$( cat ./tempFiles/afterEgrep.txt | tr -s " " | cut -d " " -f5 )
 
 echo $noOfLines
 }
